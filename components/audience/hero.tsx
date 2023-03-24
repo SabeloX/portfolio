@@ -11,13 +11,14 @@ export const Hero = ({ textColor } : HeroProps) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                height: "80vh",
+                height: "90vh",
                 justifyContent: "center",
                 textAlign: "center"
             }}
         >
             <Typography sx={{ color: textColor}} variant="h4">Sabelo Mtetwa</Typography>
-            <Typography sx={{ color: textColor}} variant="h2">Fullstack Developer</Typography>
+            <Typography 
+                className="heading" sx={{ color: textColor}} variant="h2">Fullstack Developer</Typography>
             <Typography sx={{ color: textColor}} variant="subtitle2">A Full-stack developer that turns business problems into software solutions.</Typography>
         </Container>
     )

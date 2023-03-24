@@ -43,7 +43,8 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                 position="sticky"
                 sx={{
                     backgroundColor,
-                    boxShadow: "none"
+                    boxShadow: "none",
+                    height: "10vh"
                 }}
             >
                 <Toolbar>

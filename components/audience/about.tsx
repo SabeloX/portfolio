@@ -9,14 +9,31 @@ export interface AboutProps {
 
 export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
     return (
-        <Container>
+        <Container
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "30px",
+                minHeight: "100vh"
+            }}
+        >
+            <Typography
+                variant="h4"
+                sx={{
+                    color: textColor
+                }}
+                className="heading"
+            >
+                About
+            </Typography>
             <Container
                 sx={{
                     display: "flex",
                     flexDirection: { xs: "column", sm: "row" },
                     gap: "20px",
                     alignItems: "center",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    padding: "0px !important"
                 }}
             >
                 <Image
