@@ -58,7 +58,7 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                         <Typography
                             sx={{
                                 color: textColor,
-                                fontSize: "18px"
+                                fontSize: "24px"
                             }}
                         >
                             {logoText}
@@ -81,7 +81,7 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                     <Container
                         sx={{
                             padding: "0px  !important",
-                            display: { sm: "none", sx:"flex", xs: "flex" },
+                            display: { sm: "none", xs: "flex" },
                             alignItems: "center",
                             justifyContent: "space-between",
                         }}
@@ -96,7 +96,8 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                             variant="subtitle1"
                             className="text"
                             sx={{
-                                color: textColor
+                                color: textColor,
+                                fontSize: "24px"
                             }}
                         >
                             {logoText}

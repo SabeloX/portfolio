@@ -4,9 +4,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Colours } from '../colours'
+import { About } from '../components/audience/about'
 import { Hero } from '../components/audience/hero'
 import { Navbar } from '../components/audience/navbar'
 import styles from '../styles/Home.module.css'
+
+const aboutImage = "/profile.svg";
+const aboutText = "I have been coding since 2017 as a hobby then I started getting into it professionally after I discovered that I loved it. I studied BSc. Electrical and Computer Engineering at the University of Cape Town, majored in Computer Science and Embedded Systems. I am very excited to work in the tech industry and be part of something great.";
 
 const Home: NextPage = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -48,6 +52,11 @@ const Home: NextPage = () => {
         <main className={styles.main}>
           <Hero
             textColor={textColor}
+          />
+          <About
+            textColor={textColor}
+            aboutImage={aboutImage}
+            aboutText={aboutText}
           />
         </main>
 
