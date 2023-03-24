@@ -7,10 +7,30 @@ import { Colours } from '../colours'
 import { About } from '../components/audience/about'
 import { Hero } from '../components/audience/hero'
 import { Navbar } from '../components/audience/navbar'
+import { Skills } from '../components/audience/skills'
 import styles from '../styles/Home.module.css'
 
-const aboutImage = "/profile.svg";
-const aboutText = "I have been coding since 2017 as a hobby then I started getting into it professionally after I discovered that I loved it. I studied BSc. Electrical and Computer Engineering at the University of Cape Town, majored in Computer Science and Embedded Systems. I am very excited to work in the tech industry and be part of something great.";
+export type SkillType = {
+  title: string;
+  data: string[];
+}
+
+const aboutImage: string = "/profile.svg";
+const aboutText: string = "I have been coding since 2017 as a hobby then I started getting into it professionally after I discovered that I loved it. I studied BSc. Electrical and Computer Engineering at the University of Cape Town, majored in Computer Science and Embedded Systems. I am very excited to work in the tech industry and be part of something great.";
+const skills: SkillType[] = [
+  {
+    title: "Frontend",
+    data: ["HTML/CSS", "JavaScript", "Bootstrap", "React.js", "Material UI", "Mantine", "Responsiveness"]
+  },
+  {
+    title: "Backend",
+    data: ["Node.js", "Python", "MongoDB/Mongoose", "Express.js", "SQL", 'REST API', "AWS DynamoDB"]
+  },
+  {
+    title: "Other",
+    data: ["Git/Github", "AWS Services", "Agile/SCRUM", "Typescript", "Linux/Unix"]
+  }
+]
 
 const Home: NextPage = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -57,6 +77,11 @@ const Home: NextPage = () => {
             textColor={textColor}
             aboutImage={aboutImage}
             aboutText={aboutText}
+          />
+          <Skills
+            skills={skills}
+            textColor={textColor}
+            lightShadeColor={lightShadeColor}
           />
         </main>
 
