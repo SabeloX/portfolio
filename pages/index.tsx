@@ -42,11 +42,19 @@ const Home: NextPage = () => {
       setTextColor(Colours.white);
       setMainColor(Colours.darkGreen);
       setLightShadeColor(Colours.lightGreen);
+      const body = document.querySelector("body");
+      if (body) {
+        body.style.backgroundColor = Colours.darkGreen
+      }
     }
     else if(theme === "light"){
       setTextColor(Colours.black);
       setMainColor(Colours.darkBlue);
       setLightShadeColor(Colours.lightBlue);
+      const body = document.querySelector("body");
+      if (body) {
+        body.style.backgroundColor = Colours.darkBlue
+      }
     }
   }, [theme]);
   return (
@@ -59,8 +67,8 @@ const Home: NextPage = () => {
       <Container
         sx={{
           padding: "0px !important",
-          backgroundColor: mainColor,
-          minHeight: "100vh"
+          minHeight: "100vh",
+          // maxWidth: "1366px !important"
         }}
       >
         <Navbar

@@ -1,5 +1,6 @@
 import { Container, Typography } from "@mui/material";
 import Image from "next/image";
+import { ComponentShell } from "../component-shell";
 
 export interface AboutProps {
     textColor: string;
@@ -9,28 +10,18 @@ export interface AboutProps {
 
 export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
     return (
-        <Container
+        <ComponentShell
+            textColor={textColor}
+            heading="About"
             sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "30px",
-                minHeight: "100vh"
+                gap: "100px"
             }}
         >
-            <Typography
-                variant="h4"
-                sx={{
-                    color: textColor
-                }}
-                className="heading"
-            >
-                About
-            </Typography>
             <Container
                 sx={{
                     display: "flex",
                     flexDirection: { xs: "column", sm: "row" },
-                    gap: "20px",
+                    gap: "50px",
                     alignItems: "center",
                     justifyContent: "center",
                     padding: "0px !important"
@@ -38,8 +29,8 @@ export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
             >
                 <Image
                     src={aboutImage}
-                    width={250}
-                    height={250}
+                    width={350}
+                    height={350}
                     alt="Profile image"
                 />
                 <Typography
@@ -51,6 +42,6 @@ export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
                     {aboutText}
                 </Typography>
             </Container>
-        </Container>
+        </ComponentShell>
     )
 }

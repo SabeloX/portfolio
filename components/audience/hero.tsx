@@ -11,7 +11,7 @@ export const Hero = ({ textColor } : HeroProps) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                height: "90vh",
+                height: "100vh",
                 justifyContent: "center",
                 textAlign: "center"
             }}

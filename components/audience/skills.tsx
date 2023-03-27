@@ -29,17 +29,20 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
                             sx={{
                                 backgroundColor: lightShadeColor,
                                 borderRadius: "20px",
+                                boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
                                 padding: "20px",
                                 display: "flex",
                                 flexDirection: "column",
-                                gap: "5px",
-                                height: "200px",
+                                gap: "20px",
+                                height: "400px",
                                 width: { sm: "400px" }
                             }}
                         >
                             <Typography
                                 className="heading"
                                 variant="h5"
+                                fontSize={26}
+                                color={textColor}
                             >
                                 {item.title}
                             </Typography>
@@ -49,7 +52,7 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
                                     display: "flex",
                                     flexDirection: "column",
                                     flexWrap: "wrap",
-                                    height: "160px",
+                                    // height: "160px",
                                 }}
                             >
                                 {
@@ -61,7 +64,8 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
                                             sx={{
                                                 color: textColor
                                             }}
-                                            // fontSize={18}
+                                            fontSize={18}
+                                            lineHeight={1.75}
                                         >
                                             { skill }
                                         </Typography>
