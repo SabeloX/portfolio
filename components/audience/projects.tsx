@@ -191,7 +191,8 @@ export const Projects = ({ textColor, lightShadeColor, mainColor } : ProjectsPro
                                                 height: "35px",
                                                 color: textColor,
                                                 boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
-                                                textTransform: "unset !important"
+                                                textTransform: "unset !important",
+                                                padding: "10px 0"
                                             }}
                                         >
                                             <a
