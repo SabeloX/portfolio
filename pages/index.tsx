@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Colours } from '../colours'
 import { About } from '../components/audience/about'
+import { Contact } from '../components/audience/contact'
 import { Hero } from '../components/audience/hero'
 import { Navbar } from '../components/audience/navbar'
 import { Projects } from '../components/audience/projects'
@@ -96,6 +97,10 @@ const Home: NextPage = () => {
             textColor={textColor}
             lightShadeColor={lightShadeColor}
             mainColor={mainColor}
+          />
+          <Contact
+            textColor={textColor}
+            lightShadeColor={lightShadeColor}
           />
         </main>
 

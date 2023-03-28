@@ -6,9 +6,10 @@ export interface ComponentShellProps {
     textColor: string;
     children: ReactNode;
     sx?: CSSObject;
+    subHeading?: string;
 }
 
-export const ComponentShell = ({ heading, textColor, children, sx }: ComponentShellProps) => {
+export const ComponentShell = ({ heading, textColor, children, sx, subHeading }: ComponentShellProps) => {
     return (
         <Container
             sx={{
@@ -20,15 +21,33 @@ export const ComponentShell = ({ heading, textColor, children, sx }: ComponentSh
                 ...sx
             }}
         >
-            <Typography
-                variant="h4"
+            <Container
                 sx={{
-                    color: textColor
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    padding: "0 !important"
                 }}
-                className="heading"
             >
-                {heading}
-            </Typography>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        color: textColor
+                    }}
+                    className="heading"
+                >
+                    {heading}
+                </Typography>
+                <Typography
+                    variant="h6"
+                    sx={{
+                        color: textColor
+                    }}
+                    className="heading"
+                >
+                    {subHeading}
+                </Typography>
+            </Container>
             { children }
         </Container>
     )
