@@ -26,6 +26,14 @@ a {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: #0A302B;
+  border-radius: 10px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

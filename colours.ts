@@ -1,8 +1,8 @@
 export const Colours = {
-    darkGreen: "#0A302B",
-    lightGreen: "#135A51",
-    white: "#BEBE11",
-    darkBlue: "#1F6994",
-    lightBlue: "#2887BE",
-    black: "#000000",
+    darkThemeMainColor: "#0A302B",
+    darkThemeLightToneColor: "#135A51",
+    darkThemeTextColor: "#BEBE11",
+    lightThemeMainColor: "#1F6994",
+    lightThemeLightToneColor: "#2887BE",
+    lightThemeTextColor: "#000000",
 }

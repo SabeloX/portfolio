@@ -14,8 +14,9 @@ export const ComponentShell = ({ heading, textColor, children, sx }: ComponentSh
             sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "30px",
-                minHeight: "100vh",
+                gap: "100px",
+                // minHeight: "100vh",
+                padding: "60px",
                 ...sx
             }}
         >

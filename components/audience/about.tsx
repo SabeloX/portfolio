@@ -13,9 +13,6 @@ export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
         <ComponentShell
             textColor={textColor}
             heading="About"
-            sx={{
-                gap: "100px"
-            }}
         >
             <Container
                 sx={{
@@ -32,6 +29,7 @@ export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
                     width={350}
                     height={350}
                     alt="Profile image"
+                    loading="lazy"
                 />
                 <Typography
                     variant="body1"

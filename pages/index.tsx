@@ -7,6 +7,7 @@ import { Colours } from '../colours'
 import { About } from '../components/audience/about'
 import { Hero } from '../components/audience/hero'
 import { Navbar } from '../components/audience/navbar'
+import { Projects } from '../components/audience/projects'
 import { Skills } from '../components/audience/skills'
 import styles from '../styles/Home.module.css'
 
@@ -33,27 +34,27 @@ const skills: SkillType[] = [
 ]
 
 const Home: NextPage = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [textColor, setTextColor] = useState<string>(Colours.black);
-  const [mainColor, setMainColor] = useState<string>(Colours.darkBlue);
-  const [lightShadeColor, setLightShadeColor] = useState<string>(Colours.lightBlue);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [textColor, setTextColor] = useState<string>(Colours.darkThemeTextColor);
+  const [mainColor, setMainColor] = useState<string>(Colours.darkThemeMainColor);
+  const [lightShadeColor, setLightShadeColor] = useState<string>(Colours.darkThemeLightToneColor);
   useEffect(() => {
     if (theme === "dark") {
-      setTextColor(Colours.white);
-      setMainColor(Colours.darkGreen);
-      setLightShadeColor(Colours.lightGreen);
+      setTextColor(Colours.darkThemeTextColor);
+      setMainColor(Colours.darkThemeMainColor);
+      setLightShadeColor(Colours.darkThemeLightToneColor);
       const body = document.querySelector("body");
       if (body) {
-        body.style.backgroundColor = Colours.darkGreen
+        body.style.backgroundColor = Colours.darkThemeMainColor
       }
     }
     else if(theme === "light"){
-      setTextColor(Colours.black);
-      setMainColor(Colours.darkBlue);
-      setLightShadeColor(Colours.lightBlue);
+      setTextColor(Colours.lightThemeTextColor);
+      setMainColor(Colours.lightThemeMainColor);
+      setLightShadeColor(Colours.lightThemeLightToneColor);
       const body = document.querySelector("body");
       if (body) {
-        body.style.backgroundColor = Colours.darkBlue
+        body.style.backgroundColor = Colours.lightThemeMainColor
       }
     }
   }, [theme]);
@@ -90,6 +91,11 @@ const Home: NextPage = () => {
             skills={skills}
             textColor={textColor}
             lightShadeColor={lightShadeColor}
+          />
+          <Projects
+            textColor={textColor}
+            lightShadeColor={lightShadeColor}
+            mainColor={mainColor}
           />
         </main>
 
