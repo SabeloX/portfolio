@@ -78,6 +78,7 @@ const Home: NextPage = () => {
           backgroundColor={mainColor}
           setTheme={setTheme}
           theme={theme}
+          lightShadeColor={lightShadeColor}
         />
         <main className={styles.main}>
           <Hero

@@ -1,8 +1,10 @@
-import { AppBar, Container, IconButton, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Collapse, Container, IconButton, Toolbar, Typography } from "@mui/material"
 import { Link } from "react-scroll";
 import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import { Close } from "@mui/icons-material";
+import { useState } from "react";
 
 const locations = [
     {
@@ -34,9 +36,11 @@ export interface NavbarProps {
     backgroundColor: string;
     theme: "dark" | "light";
     setTheme: (value: "dark" | "light") => void;
+    lightShadeColor: string;
 }
 
-export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarProps ) => {
+export const Navbar = ({ textColor, backgroundColor, theme, setTheme, lightShadeColor }: NavbarProps) => {
+    const [open, setOpen] = useState<boolean>(false);
     return (
         <nav>
             <AppBar
@@ -74,6 +78,7 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                                     to={item.path}
                                     smooth={true}
                                     duration={800}
+                                    offset={-20}
                                     style={{
                                         color: textColor,
                                         cursor: "pointer"
@@ -93,10 +98,9 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                         }}
                     >
                         <IconButton
-                            sx={{
-                            }}
+                            onClick={() => setOpen(true)}
                         >
-                            <MenuIcon sx={{ color: textColor }} />
+                            <MenuIcon sx={{ color: textColor }} fontSize="large" />
                         </IconButton>
                         <Typography
                             variant="subtitle1"
@@ -108,12 +112,67 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                         >
                             {logoText}
                         </Typography>
+                        <Collapse
+                            in={open}
+                            timeout={{
+                                enter: 500,
+                                exit: 500
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    backgroundColor: lightShadeColor,
+                                    height: "100vh",
+                                    width: "100vw",
+                                    position: "absolute",
+                                    left: 0,
+                                    top: 0,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "60px",
+                                    justifyContent: "center",
+                                    alignItems: "center"
+                                }}
+                            >
+                                <IconButton
+                                    sx={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        padding: "40px"
+                                    }}
+                                    onClick={() => setOpen(false)}
+                                >
+                                    <Close sx={{ color: textColor }} fontSize="large"/>
+                                </IconButton>
+                                {
+                                    locations.map((item, index) => (
+                                        <Link
+                                            className="text"
+                                            key={index}
+                                            to={item.path}
+                                            smooth={true}
+                                            duration={800}
+                                            offset={-40}
+                                            style={{
+                                                color: textColor,
+                                                cursor: "pointer",
+                                                fontSize: "34px"
+                                            }}
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    ))
+                                }
+                            </Box>
+                        </Collapse>
                     </Container>
                     <IconButton
                         onClick={() => theme === "dark" ? setTheme("light") : setTheme("dark")}
                     >
                         {
-                            theme === "dark" ? <LightModeIcon sx={{ color: textColor }} /> : <DarkModeIcon sx={{ color: textColor }} />
+                            theme === "dark" ? <LightModeIcon fontSize="large" sx={{ color: textColor }} /> : <DarkModeIcon fontSize="large" sx={{ color: textColor }} />
                         }
                     </IconButton>
                 </Toolbar>
