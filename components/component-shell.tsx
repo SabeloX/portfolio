@@ -7,9 +7,10 @@ export interface ComponentShellProps {
     children: ReactNode;
     sx?: CSSObject;
     subHeading?: string;
+    id: string;
 }
 
-export const ComponentShell = ({ heading, textColor, children, sx, subHeading }: ComponentShellProps) => {
+export const ComponentShell = ({ heading, textColor, children, sx, subHeading, id }: ComponentShellProps) => {
     return (
         <Container
             sx={{
@@ -20,6 +21,7 @@ export const ComponentShell = ({ heading, textColor, children, sx, subHeading }:
                 padding: "60px",
                 ...sx
             }}
+            id={id}
         >
             <Container
                 sx={{

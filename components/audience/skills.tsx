@@ -13,6 +13,7 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
         <ComponentShell
             heading="Skills"
             textColor={textColor}
+            id="skills"
         >
             <Container
                 sx={{

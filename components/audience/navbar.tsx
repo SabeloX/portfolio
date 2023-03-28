@@ -1,5 +1,5 @@
 import { AppBar, Container, IconButton, Toolbar, Typography } from "@mui/material"
-import Link from "next/link"
+import { Link } from "react-scroll";
 import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -7,23 +7,23 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 const locations = [
     {
         label: "Home",
-        path: "#home"
+        path: "home"
     },
     {
         label: "About",
-        path: "#about"
+        path: "about"
     },
     {
         label: "Skills",
-        path: "#skills"
+        path: "skills"
     },
     {
         label: "Projects",
-        path: "#projects"
+        path: "projects"
     },
     {
         label: "Contact",
-        path: "#contact"
+        path: "contact"
     },
 ]
 
@@ -71,9 +71,12 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme } : NavbarP
                                 <Link
                                     className="text"
                                     key={index}
-                                    href={item.path}
+                                    to={item.path}
+                                    smooth={true}
+                                    duration={800}
                                     style={{
-                                        color: textColor
+                                        color: textColor,
+                                        cursor: "pointer"
                                     }}
                                 >
                                     {item.label}

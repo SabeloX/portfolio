@@ -13,6 +13,7 @@ export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
         <ComponentShell
             textColor={textColor}
             heading="About"
+            id="about"
         >
             <Container
                 sx={{

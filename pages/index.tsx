@@ -70,8 +70,8 @@ const Home: NextPage = () => {
         sx={{
           padding: "0px !important",
           minHeight: "100vh",
-          // maxWidth: "1366px !important"
         }}
+        id="home"
       >
         <Navbar
           textColor={textColor}

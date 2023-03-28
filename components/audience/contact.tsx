@@ -19,6 +19,7 @@ export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
             heading="Get in touch"
             textColor={textColor}
             subHeading="Please do not hesitate to contact me about anything."
+            id="contact"
         >
             <Container
                 sx={{

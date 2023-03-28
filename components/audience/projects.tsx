@@ -43,6 +43,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor } : ProjectsPro
             sx={{
                 justifyContent: "center"
             }}
+            id="projects"
         >
             {
                 data.map((item, index) => (
