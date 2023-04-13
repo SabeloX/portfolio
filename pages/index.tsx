@@ -1,5 +1,5 @@
 import { AppBar, Container, Toolbar } from '@mui/material'
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -11,30 +11,17 @@ import { Navbar } from '../components/audience/navbar'
 import { Projects } from '../components/audience/projects'
 import { Skills } from '../components/audience/skills'
 import styles from '../styles/Home.module.css'
-
-export type SkillType = {
-  title: string;
-  data: string[];
-}
+import prisma from '../lib/prisma'
+import { Skills as SkillsType } from '@prisma/client'
 
 const aboutImage: string = "/profile.svg";
 const aboutText: string = "I have been coding since 2017 as a hobby then I started getting into it professionally after I discovered that I loved it. I studied BSc. Electrical and Computer Engineering at the University of Cape Town, majored in Computer Science and Embedded Systems. I am very excited to work in the tech industry and be part of something great.";
-const skills: SkillType[] = [
-  {
-    title: "Frontend",
-    data: ["HTML/CSS", "JavaScript", "Bootstrap", "React.js", "Material UI", "Mantine", "Responsiveness"]
-  },
-  {
-    title: "Backend",
-    data: ["Node.js", "Python", "MongoDB/Mongoose", "Express.js", "SQL", 'REST API', "AWS DynamoDB"]
-  },
-  {
-    title: "Other",
-    data: ["Git/Github", "AWS Services", "Agile/SCRUM", "Typescript", "Linux/Unix"]
-  }
-]
 
-const Home: NextPage = () => {
+interface HomeProps {
+  skills: SkillsType[]
+}
+
+const Home: NextPage<HomeProps> = ({ skills }) => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [textColor, setTextColor] = useState<string>(Colours.darkThemeTextColor);
   const [mainColor, setMainColor] = useState<string>(Colours.darkThemeMainColor);
@@ -112,6 +99,16 @@ const Home: NextPage = () => {
       </Container>
     </div>
   )
+}
+
+export const getServerSideProps = async () => {
+  const skills = await prisma.skills.findMany();
+  console.log(skills)
+  return {
+    props: {
+      skills
+    }
+  }
 }
 
 export default Home
