@@ -147,7 +147,7 @@ export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
                             borderBottom: `1px solid ${textColor} !important`,
                         }
                     }}
-                    label="Email address"
+                    label="Email"
                     value={email}
                     type="email"
                     onChange={(event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}

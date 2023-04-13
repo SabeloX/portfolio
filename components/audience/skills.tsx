@@ -44,6 +44,9 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
                                 variant="h5"
                                 fontSize={26}
                                 color={textColor}
+                                sx={{
+                                    textDecoration: "underline"
+                                }}
                             >
                                 {item.title}
                             </Typography>
@@ -53,7 +56,7 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
                                     display: "flex",
                                     flexDirection: "column",
                                     flexWrap: "wrap",
-                                    // height: "160px",
+                                    minHeight: "160px",
                                 }}
                             >
                                 {

@@ -70,6 +70,7 @@ const Home: NextPage = () => {
         sx={{
           padding: "0px !important",
           minHeight: "100vh",
+          maxWidth: "1360px !important"
         }}
         id="home"
       >

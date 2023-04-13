@@ -18,8 +18,8 @@ export const Hero = ({ textColor } : HeroProps) => {
         >
             <Typography sx={{ color: textColor}} variant="h4">Sabelo Mtetwa</Typography>
             <Typography 
-                className="heading" sx={{ color: textColor}} variant="h2">Fullstack Developer</Typography>
-            <Typography sx={{ color: textColor}} variant="subtitle2">A Full-stack developer that turns business problems into software solutions.</Typography>
+                className="heading" sx={{ color: textColor}} variant="h2">Software Developer</Typography>
+            <Typography sx={{ color: textColor}} variant="subtitle2">A software developer that turns business problems into software solutions.</Typography>
         </Container>
     )
 }

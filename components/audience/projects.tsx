@@ -101,6 +101,9 @@ export const Projects = ({ textColor, lightShadeColor, mainColor } : ProjectsPro
                                 variant="h4"
                                 color={textColor}
                                 className="heading"
+                                sx={{
+                                    textDecoration: "underline"
+                                }}
                             >
                                 {item.title}
                             </Typography>
