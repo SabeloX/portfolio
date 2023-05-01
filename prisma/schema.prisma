@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,7 +8,25 @@ datasource db {
 }
 
 model Skills {
-  id  String @default(cuid()) @id
+  id    String   @id @default(cuid())
   title String
   data  String[]
+}
+
+model Projects {
+  title       String   @unique
+  concepts    String[]
+  tools       String[]
+  description String
+  source      String
+  demo        String
+}
+
+model Details {
+  name  String @unique
+  surname String
+  contact String
+  email String
+  profession  String
+  slogan  String
 }

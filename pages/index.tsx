@@ -12,16 +12,18 @@ import { Projects } from '../components/audience/projects'
 import { Skills } from '../components/audience/skills'
 import styles from '../styles/Home.module.css'
 import prisma from '../lib/prisma'
-import { Skills as SkillsType } from '@prisma/client'
+import { Skills as SkillType, Projects as ProjectType, Details } from '@prisma/client'
 
 const aboutImage: string = "/profile.svg";
-const aboutText: string = "I have been coding since 2017 as a hobby then I started getting into it professionally after I discovered that I loved it. I studied BSc. Electrical and Computer Engineering at the University of Cape Town, majored in Computer Science and Embedded Systems. I am very excited to work in the tech industry and be part of something great.";
+const aboutText: string = "My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.";
 
 interface HomeProps {
-  skills: SkillsType[]
+  skills: SkillType[];
+  projects: ProjectType[];
+  details: Details;
 }
 
-const Home: NextPage<HomeProps> = ({ skills }) => {
+const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [textColor, setTextColor] = useState<string>(Colours.darkThemeTextColor);
   const [mainColor, setMainColor] = useState<string>(Colours.darkThemeMainColor);
@@ -71,6 +73,9 @@ const Home: NextPage<HomeProps> = ({ skills }) => {
         <main className={styles.main}>
           <Hero
             textColor={textColor}
+            name={`${details.name} ${details.surname}`}
+            slogan={details.slogan}
+            profession={details.profession}
           />
           <About
             textColor={textColor}
@@ -86,10 +91,13 @@ const Home: NextPage<HomeProps> = ({ skills }) => {
             textColor={textColor}
             lightShadeColor={lightShadeColor}
             mainColor={mainColor}
+            projects={projects}
           />
           <Contact
             textColor={textColor}
             lightShadeColor={lightShadeColor}
+            contact={details.contact}
+            email={details.email}
           />
         </main>
 
@@ -103,10 +111,13 @@ const Home: NextPage<HomeProps> = ({ skills }) => {
 
 export const getServerSideProps = async () => {
   const skills = await prisma.skills.findMany();
-  console.log(skills)
+  const projects = await prisma.projects.findMany();
+  const details = await prisma.details.findUnique({ where: { name: "Sabelo" } });
   return {
     props: {
-      skills
+      skills,
+      projects,
+      details,
     }
   }
 }

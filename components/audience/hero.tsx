@@ -2,9 +2,12 @@ import { Container, Typography } from "@mui/material"
 
 export interface HeroProps {
     textColor: string;
+    name: string;
+    profession: string;
+    slogan: string;
 }
 
-export const Hero = ({ textColor } : HeroProps) => {
+export const Hero = ({ textColor, name, profession, slogan } : HeroProps) => {
     return (
         <Container
             sx={{
@@ -16,10 +19,10 @@ export const Hero = ({ textColor } : HeroProps) => {
                 textAlign: "center"
             }}
         >
-            <Typography sx={{ color: textColor}} variant="h4">Sabelo Mtetwa</Typography>
+            <Typography sx={{ color: textColor }} variant="h4">{ name }</Typography>
             <Typography 
-                className="heading" sx={{ color: textColor}} variant="h2">Software Developer</Typography>
-            <Typography sx={{ color: textColor}} variant="subtitle2">A software developer that turns business problems into software solutions.</Typography>
+                className="heading" sx={{ color: textColor }} variant="h2">{ profession }</Typography>
+            <Typography sx={{ color: textColor }} variant="subtitle2">{ slogan }</Typography>
         </Container>
     )
 }

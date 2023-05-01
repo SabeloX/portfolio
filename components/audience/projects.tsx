@@ -1,11 +1,13 @@
 import { Button, Container, List, ListItem, Typography } from "@mui/material";
 import Image from "next/image";
 import { ComponentShell } from "../component-shell"
+import { Projects as ProjectType } from "@prisma/client";
 
 export interface ProjectsProps {
     textColor: string;
     lightShadeColor: string;
     mainColor: string;
+    projects: ProjectType[];
 }
 
 const data = [
@@ -35,7 +37,7 @@ const data = [
     },
 ]
 
-export const Projects = ({ textColor, lightShadeColor, mainColor } : ProjectsProps) => {
+export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : ProjectsProps) => {
     return (
         <ComponentShell
             textColor={textColor}
@@ -46,7 +48,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor } : ProjectsPro
             id="projects"
         >
             {
-                data.map((item, index) => (
+                projects.map((item, index) => (
                     <Container
                         key={index}
                         sx={{
@@ -183,7 +185,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor } : ProjectsPro
                                         },
                                         {
                                             text: "Source code",
-                                            url: item.sourceCode
+                                            url: item.source
                                         }
                                     ].map((item, index) => (
                                         <Button

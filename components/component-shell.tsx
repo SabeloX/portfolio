@@ -18,7 +18,7 @@ export const ComponentShell = ({ heading, textColor, children, sx, subHeading, i
                 flexDirection: "column",
                 gap: "100px",
                 // minHeight: "100vh",
-                padding: "60px",
+                padding: "60px 16px",
                 ...sx
             }}
             id={id}

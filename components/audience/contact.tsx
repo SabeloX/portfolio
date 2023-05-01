@@ -7,11 +7,13 @@ import MailIcon from '@mui/icons-material/Mail';
 export interface ContactProps {
     textColor: string;
     lightShadeColor: string;
+    contact: string;
+    email: string;
 }
 
-export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
+export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactProps) => {
     const [name, setName] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
+    const [emailAddress, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
     const [subject, setSubject] = useState<string>("");
     return (
@@ -35,7 +37,7 @@ export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
                     [
                         {
                             label: "Contact number",
-                            value: "+27 67 731 2806",
+                            value: contact,
                             icon: <PhoneIphoneIcon
                                 sx={{ color: textColor }}
                                 fontSize="large"
@@ -43,7 +45,7 @@ export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
                         },
                         {
                             label: "Email address",
-                            value: "sabelo.x.mtetwa@gmail.com",
+                            value: email,
                             icon: <MailIcon
                                 sx={{ color: textColor }}
                                 fontSize="large"
@@ -53,7 +55,8 @@ export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
                         <Box
                             key={index}
                             sx={{
-                                width: "400px",
+                                maxWidth: "400px",
+                                padding: "10px",
                                 height: "150px",
                                 backgroundColor: lightShadeColor,
                                 borderRadius: "20px",
@@ -113,6 +116,15 @@ export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
                     maxWidth: { md: "650px" }
                 }}
             >
+                <Typography
+                    variant="h6"
+                    sx={{
+                        color: textColor
+                    }}
+                    className="heading"
+                >
+                    Send me a personal message
+                </Typography>
                 <TextField
                     variant="standard"
                     sx={{
@@ -148,7 +160,7 @@ export const Contact = ({ textColor, lightShadeColor }: ContactProps) => {
                         }
                     }}
                     label="Email"
-                    value={email}
+                    value={emailAddress}
                     type="email"
                     onChange={(event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
                 />
