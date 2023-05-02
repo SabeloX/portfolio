@@ -20,6 +20,7 @@ model Projects {
   description String
   source      String
   demo        String
+  image String
 }
 
 model Details {

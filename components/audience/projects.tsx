@@ -10,33 +10,6 @@ export interface ProjectsProps {
     projects: ProjectType[];
 }
 
-const data = [
-    {
-        title: "Talk To Tobo",
-        concepts: ["Dynamic blogs", "CRUD operations", "Authentication & authorization", "Responsive"],
-        description: "Personal website for a life coach.",
-        tools: ["Next.js", "Mantine - UI Framework"],
-        sourceCode: "",
-        demo: ""
-    },
-    {
-        title: "Digital Characters",
-        concepts: ["CRUD operations", "Authentication & authorization", "Responsive"],
-        description: "Give yourself a digital character.",
-        tools: ["Next.js", "Mongoose", "MongoDB"],
-        sourceCode: "https://github.com/SabeloX/create-and-display-digital-characters",
-        demo: "https://create-and-display-digital-characters.vercel.app/"
-    },
-    {
-        title: "Talk To Tobo",
-        concepts: ["Dynamic blogs", "CRUD operations", "Authentication & authorization", "Responsive"],
-        description: "Personal website for a life coach.",
-        tools: ["Next.js", "Mantine - UI Framework"],
-        sourceCode: "",
-        demo: ""
-    },
-]
-
 export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : ProjectsProps) => {
     return (
         <ComponentShell
@@ -61,7 +34,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                             minHeight: "400px",
                             // gap: "40px",
                             margin: "0 !important",
-                            placeSelf: { md: index % 2 === 0 ? "start" : "end", xs: "center" },
+                            placeSelf: "center",
                             boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
                         }}
                     >
@@ -76,7 +49,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                             }}
                         >
                             <Image
-                                src="/projects/project1.jpg"
+                                src={item.image}
                                 width={300}
                                 style={{
                                     objectFit: "cover",

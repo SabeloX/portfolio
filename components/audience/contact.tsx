@@ -17,8 +17,6 @@ type StateVariable = {
     error: boolean;
 }
 
-//https://public.herotofu.com/v1/dcf54ab0-e864-11ed-b24a-93241516dd10 endpoint email service
-
 export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactProps) => {
     const [name, setName] = useState<StateVariable>({ value: "", error: false });
     const [emailAddress, setEmail] = useState<StateVariable>({ value: "", error: false });
@@ -256,68 +254,74 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
                         </Typography>
                     }
                 </FormGroup>
-                <Button
+                <Container
                     sx={{
-                        backgroundColor: `${lightShadeColor} !important`,
-                        width: "200px",
-                        borderRadius: "15px",
-                        height: "35px",
-                        color: textColor,
-                        boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
-                        textTransform: "unset !important",
-                        padding: "10px 0"
-                    }}
-                    onClick={() => {
-                        if (name.value === "" || emailAddress.value === "" || subject.value === "" || message.value === "") {
-                            if (name.value === "") {
-                                setName({ value: name.value, error: true })
-                            }
-                            if (emailAddress.value === "") {
-                                setEmail({ value: emailAddress.value, error: true })
-                            }
-                            if (subject.value === "") {
-                                setSubject({ value: subject.value, error: true })
-                            }
-                            if (message.value === "") {
-                                setMessage({ value: message.value, error: true })
-                            }
-                        }
-                        else {
-                            axios.post(
-                                "https://public.herotofu.com/v1/dcf54ab0-e864-11ed-b24a-93241516dd10",
-                                {
-                                    name: name.value,
-                                    email: emailAddress.value,
-                                    subject: subject.value,
-                                    message: message.value
-                                }).
-                                then(result => {
-                                    setName({ value: "", error: false });
-                                    setEmail({ value: "", error: false });
-                                    setMessage({ value: "", error: false });
-                                    setSubject({ value: "", error: false });
-                                    setOpen(true);
-                                })
-                                .catch(error => {
-                                    setFeedback({ value: "An error has occured. Please contact the email: sabelo.x.mtetwa@gmail.com", error: true });
-                                    setOpen(true);
-                                })
-                        }
+                        textAlign: "center"
                     }}
                 >
-                    Send
-                </Button>
-                <div
-                    style={{
-                        textIndent: "-99999px",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        position: "absolute"
-                    }}
-                    aria-hidden="true"
-                >
-                    <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
-                </div>
+                    <Button
+                        sx={{
+                            backgroundColor: `${lightShadeColor} !important`,
+                            width: "200px",
+                            borderRadius: "15px",
+                            height: "35px",
+                            color: textColor,
+                            boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
+                            textTransform: "unset !important",
+                            padding: "10px 0"
+                        }}
+                        onClick={() => {
+                            if (name.value === "" || emailAddress.value === "" || subject.value === "" || message.value === "") {
+                                if (name.value === "") {
+                                    setName({ value: name.value, error: true })
+                                }
+                                if (emailAddress.value === "") {
+                                    setEmail({ value: emailAddress.value, error: true })
+                                }
+                                if (subject.value === "") {
+                                    setSubject({ value: subject.value, error: true })
+                                }
+                                if (message.value === "") {
+                                    setMessage({ value: message.value, error: true })
+                                }
+                            }
+                            else {
+                                axios.post(
+                                    "https://public.herotofu.com/v1/dcf54ab0-e864-11ed-b24a-93241516dd10",
+                                    {
+                                        name: name.value,
+                                        email: emailAddress.value,
+                                        subject: subject.value,
+                                        message: message.value
+                                    }).
+                                    then(result => {
+                                        setName({ value: "", error: false });
+                                        setEmail({ value: "", error: false });
+                                        setMessage({ value: "", error: false });
+                                        setSubject({ value: "", error: false });
+                                        setOpen(true);
+                                    })
+                                    .catch(error => {
+                                        setFeedback({ value: "An error has occured. Please contact the email: sabelo.x.mtetwa@gmail.com", error: true });
+                                        setOpen(true);
+                                    })
+                            }
+                        }}
+                    >
+                        Send
+                    </Button>
+                    <div
+                        style={{
+                            textIndent: "-99999px",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            position: "absolute"
+                        }}
+                        aria-hidden="true"
+                    >
+                        <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
+                    </div>
+                </Container>
             </Container>
             <Snackbar
                 open={open}

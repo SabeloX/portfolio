@@ -28,6 +28,7 @@ const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
   const [textColor, setTextColor] = useState<string>(Colours.darkThemeTextColor);
   const [mainColor, setMainColor] = useState<string>(Colours.darkThemeMainColor);
   const [lightShadeColor, setLightShadeColor] = useState<string>(Colours.darkThemeLightToneColor);
+  
   useEffect(() => {
     if (theme === "dark") {
       setTextColor(Colours.darkThemeTextColor);
