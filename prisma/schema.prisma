@@ -20,14 +20,14 @@ model Projects {
   description String
   source      String
   demo        String
-  image String
+  image       String
 }
 
 model Details {
-  name  String @unique
-  surname String
-  contact String
-  email String
-  profession  String
-  slogan  String
+  name       String @unique
+  surname    String
+  contact    String
+  email      String
+  profession String
+  slogan     String
 }
