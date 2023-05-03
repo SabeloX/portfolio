@@ -14,7 +14,7 @@ import styles from '../styles/Home.module.css'
 import prisma from '../lib/prisma'
 import { Skills as SkillType, Projects as ProjectType, Details } from '@prisma/client'
 
-const aboutImage: string = "/profile.svg";
+const aboutImage: string = "/profile.svg"
 const aboutText: string = "My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.";
 
 interface HomeProps {
