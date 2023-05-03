@@ -52,7 +52,7 @@ const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Sabelo</title>
+        <title>{details.name}</title>
         <meta name="description" content="Sabelo's personal portfolio. Click the link and explore." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -80,8 +80,8 @@ const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
           />
           <About
             textColor={textColor}
-            aboutImage={aboutImage}
-            aboutText={aboutText}
+            aboutImage={details.profile}
+            aboutText={details.about}
           />
           <Skills
             skills={skills}

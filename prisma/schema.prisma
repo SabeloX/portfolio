@@ -30,4 +30,6 @@ model Details {
   email      String
   profession String
   slogan     String
+  about String
+  profile String
 }
