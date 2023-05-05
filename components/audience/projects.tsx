@@ -1,13 +1,13 @@
 import { Button, Container, List, ListItem, Typography } from "@mui/material";
 import Image from "next/image";
 import { ComponentShell } from "../component-shell"
-import { Projects as ProjectType } from "@prisma/client";
+import { ProjectsDocument } from "../../lib/schema";
 
 export interface ProjectsProps {
     textColor: string;
     lightShadeColor: string;
     mainColor: string;
-    projects: ProjectType[];
+    projects: ProjectsDocument[];
 }
 
 export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : ProjectsProps) => {

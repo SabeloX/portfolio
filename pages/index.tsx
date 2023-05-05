@@ -11,16 +11,16 @@ import { Navbar } from '../components/audience/navbar'
 import { Projects } from '../components/audience/projects'
 import { Skills } from '../components/audience/skills'
 import styles from '../styles/Home.module.css'
-import prisma from '../lib/prisma'
-import { Skills as SkillType, Projects as ProjectType, Details } from '@prisma/client'
+import { Detail, DetailsDocument, Project, ProjectsDocument, Skill, SkillsDocument } from '../lib/database'
+import { connectDB } from '../lib/database'
 
 const aboutImage: string = "/profile.svg"
 const aboutText: string = "My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.";
 
 interface HomeProps {
-  skills: SkillType[];
-  projects: ProjectType[];
-  details: Details;
+  skills: SkillsDocument[];
+  projects: ProjectsDocument[];
+  details: DetailsDocument;
 }
 
 const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
@@ -28,7 +28,6 @@ const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
   const [textColor, setTextColor] = useState<string>(Colours.darkThemeTextColor);
   const [mainColor, setMainColor] = useState<string>(Colours.darkThemeMainColor);
   const [lightShadeColor, setLightShadeColor] = useState<string>(Colours.darkThemeLightToneColor);
-  
   useEffect(() => {
     if (theme === "dark") {
       setTextColor(Colours.darkThemeTextColor);
@@ -110,15 +109,39 @@ const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
   )
 }
 
-export const getServerSideProps = async () => {
-  const skills = await prisma.skills.findMany();
-  const projects = await prisma.projects.findMany();
-  const details = await prisma.details.findUnique({ where: { name: "Sabelo" } });
+const serializeData = (data: any) => {
   return {
-    props: {
-      skills,
-      projects,
-      details,
+    ...data,
+    _id: data._id.toString()
+  }
+}
+
+export const getServerSideProps = async () => {
+  try {
+    await connectDB();
+    const details: DetailsDocument | null = await Detail.findOne({ name: "Sabelo" }).select({ _id: 0 }).lean();
+    const skills: SkillsDocument[] = await Skill.find().lean();
+    const projects: ProjectsDocument[] = await Project.find().lean();
+    const skillsDoc = skills.map(item => {
+      return serializeData(item)
+    })
+    const projectsDoc = projects.map(item => {
+      return serializeData(item)
+    })
+    return {
+      props: {
+        skills: skillsDoc,
+        projects: projectsDoc,
+        details,
+      }
+    }
+  } catch (error: any) {
+    return {
+      props: {
+        skills: [],
+        projects: [],
+        details: {}
+      }
     }
   }
 }

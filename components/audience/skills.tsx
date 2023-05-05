@@ -1,10 +1,10 @@
 import { Box, Container, Typography } from "@mui/material"
 import { ComponentShell } from "../component-shell"
-import { Skills as SkillsTypes } from "@prisma/client";
+import { SkillsDocument } from "../../lib/schema";
 
 export interface SkillsProps {
     textColor: string;
-    skills: SkillsTypes[];
+    skills: SkillsDocument[];
     lightShadeColor: string;
 }
 
@@ -26,7 +26,7 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
                 {
                     skills.map((item, index) => (
                         <Box
-                            key={item.id + index}
+                            key={item._id + index}
                             sx={{
                                 backgroundColor: lightShadeColor,
                                 borderRadius: "20px",
