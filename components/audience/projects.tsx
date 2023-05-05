@@ -1,7 +1,7 @@
 import { Button, Container, List, ListItem, Typography } from "@mui/material";
 import Image from "next/image";
 import { ComponentShell } from "../component-shell"
-import { ProjectsDocument } from "../../lib/schema";
+import { ProjectsDocument } from "../../lib/database";
 
 export interface ProjectsProps {
     textColor: string;

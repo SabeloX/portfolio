@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@mui/material"
 import { ComponentShell } from "../component-shell"
-import { SkillsDocument } from "../../lib/schema";
+import { SkillsDocument } from "../../lib/database";
 
 export interface SkillsProps {
     textColor: string;
