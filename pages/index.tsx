@@ -109,39 +109,15 @@ const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
   )
 }
 
-const serializeData = (data: any) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const domain = req.headers.host;
+  const res = await fetch(`https://${domain}/api`);
+  const data = await res.json();
   return {
-    ...data,
-    _id: data._id.toString()
-  }
-}
-
-export const getServerSideProps = async () => {
-  try {
-    await connectDB();
-    const details: DetailsDocument | null = await Detail.findOne({ name: "Sabelo" }).select({ _id: 0 }).lean();
-    const skills: SkillsDocument[] = await Skill.find().lean();
-    const projects: ProjectsDocument[] = await Project.find().lean();
-    const skillsDoc = skills.map(item => {
-      return serializeData(item)
-    })
-    const projectsDoc = projects.map(item => {
-      return serializeData(item)
-    })
-    return {
-      props: {
-        skills: skillsDoc,
-        projects: projectsDoc,
-        details,
-      }
-    }
-  } catch (error: any) {
-    return {
-      props: {
-        skills: [],
-        projects: [],
-        details: {}
-      }
+    props: {
+      skills: data.skills,
+      projects: data.projects,
+      details: data.details,
     }
   }
 }
