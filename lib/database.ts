@@ -33,6 +33,7 @@ export const detailsSchema = new Schema<DetailsDocument>({
 export interface SkillsDocument {
     data: string[];
     title: string;
+    _id: string;
 }
 
 /**
@@ -54,6 +55,7 @@ export interface ProjectsDocument {
     tools: string[];
     demo: string;
     source: string;
+    _id: string;
 }
 
 /**
