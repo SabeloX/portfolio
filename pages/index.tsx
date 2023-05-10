@@ -13,6 +13,7 @@ import { Skills } from '../components/audience/skills'
 import styles from '../styles/Home.module.css'
 import { Detail, DetailsDocument, Project, ProjectsDocument, Skill, SkillsDocument } from '../lib/database'
 import { connectDB } from '../lib/database'
+import { details, projects, skills } from '../samples'
 
 const aboutImage: string = "/profile.svg"
 const aboutText: string = "My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.";
@@ -110,14 +111,11 @@ const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const domain = req.headers.host;
-  const res = await fetch(`https://${domain}/api`);
-  const data = await res.json();
   return {
     props: {
-      skills: data.skills,
-      projects: data.projects,
-      details: data.details,
+      skills: skills,
+      projects: projects,
+      details: details,
     }
   }
 }
