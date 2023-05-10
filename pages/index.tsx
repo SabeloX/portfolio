@@ -15,16 +15,13 @@ import { Detail, DetailsDocument, Project, ProjectsDocument, Skill, SkillsDocume
 import { connectDB } from '../lib/database'
 import { details, projects, skills } from '../samples'
 
-const aboutImage: string = "/profile.svg"
-const aboutText: string = "My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.";
-
 interface HomeProps {
   skills: SkillsDocument[];
   projects: ProjectsDocument[];
   details: DetailsDocument;
 }
 
-const Home: NextPage<HomeProps> = ({ skills, projects, details }) => {
+const Home: NextPage<HomeProps> = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [textColor, setTextColor] = useState<string>(Colours.darkThemeTextColor);
   const [mainColor, setMainColor] = useState<string>(Colours.darkThemeMainColor);

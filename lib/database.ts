@@ -3,7 +3,7 @@ import { connect, model, models, Schema, Document } from "mongoose";
 /**
  * Detail schema document type
  */
-export interface DetailsDocument extends Document {
+export interface DetailsDocument{
     name: string;
     surname: string;
     contact: string;
@@ -12,7 +12,6 @@ export interface DetailsDocument extends Document {
     slogan: string;
     about: string;
     profile: string;
-    _id: string;
 }
 
 /**
@@ -31,8 +30,7 @@ export const detailsSchema = new Schema<DetailsDocument>({
 /**
  * Skills document type
  */
-export interface SkillsDocument extends Document {
-    _id: string;
+export interface SkillsDocument {
     data: string[];
     title: string;
 }
@@ -48,7 +46,7 @@ export const skillsSchema = new Schema<SkillsDocument>({
 /**
  * Projects document type
  */
-export interface ProjectsDocument extends Document {
+export interface ProjectsDocument {
     image: string;
     title: string;
     description: string;
@@ -56,7 +54,6 @@ export interface ProjectsDocument extends Document {
     tools: string[];
     demo: string;
     source: string;
-    _id: string;
 }
 
 /**
